@@ -236,6 +236,7 @@ var World = {
 		this.gui.add(this.guiController, "resetCamera");
 		this.gui.add(this.guiController, "next");
 		document.getElementById("gui").appendChild(this.gui.domElement);
+		if (this.isMobile()) this.gui.close();
 		this.updateGui();
 	},
 	updateGui: function() {
@@ -521,6 +522,11 @@ function onMouseDblClick(evt) {
 	World.onMouseDblClick(evt);
 }
 
+function onTouchStart(evt) {
+	evt.preventDefault();
+	Controller.nextStage();
+}
+
 window.onload = function() {
 	World.init();
 	Controller.init();
@@ -535,4 +541,6 @@ window.onload = function() {
 	World.domRenderer.addEventListener('mouseup', onMouseUp, false);
 	World.domRenderer.addEventListener('mouseout', onMouseOut, false);
 	World.domRenderer.addEventListener('dblclick', onMouseDblClick, false);
+	if (World.isMobile())
+		World.domRenderer.addEventListener('touchstart', onTouchStart, false);
 }
