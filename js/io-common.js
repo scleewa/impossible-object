@@ -157,7 +157,7 @@ var World = {
 	init: function() {
 		// Doesn't fully support mobile browsers
 		if (this.isMobile()) {
-			alert("io doesn't fully support mobile browsers.");
+			alert("mobile browsers aren't supported");
 		} 
 		// Clock
 		this.clock = new THREE.Clock();
